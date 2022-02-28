@@ -27,8 +27,21 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+// const app = new Vue({
+//     el: '#app',
+//     created(){
+// alert(111)    }
+//
+// });
 const app = new Vue({
     el: '#app',
+    created() {
 
+        Echo.channel('chat')
+            .listen('MessageSentEvent', (e) => {
+                alert(e.message.message)
+                console.log(e.message.message)
 
+            });
+    },
 });

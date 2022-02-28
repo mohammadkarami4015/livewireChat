@@ -3,7 +3,8 @@ window._ = require('lodash');
 try {
     require('bootstrap');
 } catch (e) {}
-
+import Echo from 'laravel-echo';
+import Larasocket from 'larasocket-js';
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
@@ -30,3 +31,9 @@ window.axios = require('axios');
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+
+window.Echo = new Echo({
+    broadcaster: Larasocket,
+    token: process.env.MIX_LARASOCKET_TOKEN,
+});
